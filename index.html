@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Code</title>
+</head>
+<body>
+  <p id="round">1</p>
+   <p id="required">2</p>
+  <p id="code">0</p>
+ <input type="number" id="offer">
+  <button onclick="gofunct()"id="go">Go</button>
+  <p id="status">Unknown</p>
+  <script>
+    let r = 1
+    let thecode = 0;
+    let therule = Math.floor(Math.random() * 10);
+    let requi = 2;
+    let earn = 100;
+    let offered = 0;
+     thecode = Math.floor(Math.random() * 10);
+    document.getElementById("code").textContent = thecode;
+    function gofunct() {
+      document.getElementById("offer").value = offered;
+      if earn >= requi {
+        if therule == 0 {
+          if thecode % 2 === 0 {
+            earn += offered;
+            document.getElementById("status").textContent = "Loss"
+          } else {
+            earn -= offered;
+             document.getElementById("status").textContent = "Win"
+          }
+        } else if therule == 1  {
+          if ! thecode % 2 === 0 {
+            earn += offered;
+            document.getElementById("status").textContent = "Loss"
+          } else {
+            earn -= offered;
+             document.getElementById("status").textContent = "Win"
+          }
+        }
+      } else {
+         document.getElementById("status").textContent = "You lose.";
+        return;
+      }
+      thecode = Math.floor(Math.random() * 10);
+    document.getElementById("code").textContent = thecode;
+      r += 1;
+      document.getElementById("round").textContent = r;
+    }
+  </script>
+</body>
+</html>
